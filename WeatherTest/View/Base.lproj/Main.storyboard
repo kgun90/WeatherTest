@@ -116,13 +116,13 @@
                                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-DU-AgZ">
+                                            <stackView opaque="NO" tag="1" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-DU-AgZ">
                                                 <rect key="frame" x="17" y="64" width="340" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5sN-xx-ld1" userLabel="Stack ViewStack Viewports">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-TA-baB">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-TA-baB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="61.5"/>
                                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -138,7 +138,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eSw-Na-rb0" userLabel="Stack ViewStack Viewports">
+                                                    <stackView opaque="NO" tag="1" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eSw-Na-rb0" userLabel="Stack ViewStack Viewports">
                                                         <rect key="frame" x="70" y="0.0" width="60" height="120"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eh7-nD-Fec">
@@ -157,7 +157,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-4h-ppo" userLabel="Stack ViewStack Viewports">
+                                                    <stackView opaque="NO" tag="2" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-4h-ppo" userLabel="Stack ViewStack Viewports">
                                                         <rect key="frame" x="140" y="0.0" width="60" height="120"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-bg-JgX">
@@ -176,7 +176,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j8n-8n-BsD" userLabel="Stack ViewStack Viewports">
+                                                    <stackView opaque="NO" tag="3" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j8n-8n-BsD" userLabel="Stack ViewStack Viewports">
                                                         <rect key="frame" x="210" y="0.0" width="60" height="120"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="b7S-ba-ME1">
@@ -195,7 +195,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D75-Uw-2SJ" userLabel="Stack ViewStack Viewports">
+                                                    <stackView opaque="NO" tag="4" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D75-Uw-2SJ" userLabel="Stack ViewStack Viewports">
                                                         <rect key="frame" x="280" y="0.0" width="60" height="120"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.drizzle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Laa-Me-vVp">
@@ -251,9 +251,11 @@
                     </view>
                     <connections>
                         <outlet property="cityLabel" destination="GTR-dx-Q7n" id="5G5-SH-dYn"/>
+                        <outlet property="forecastImageLabel" destination="1yo-DU-AgZ" id="ePL-1P-eU7"/>
                         <outlet property="forecastStack" destination="OVw-bt-Cv6" id="XdJ-D5-xNR"/>
                         <outlet property="searchTextfField" destination="5zv-Du-OlX" id="W0g-K1-lLL"/>
                         <outlet property="tempLabel" destination="XKB-E1-PoZ" id="9rk-Lu-Y5r"/>
+                        <outlet property="weatherImage" destination="dtt-yZ-w1o" id="4dq-qQ-Nia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

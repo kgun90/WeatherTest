@@ -18,6 +18,7 @@ struct WeatherInfo {
     let temp: Float
     let city: String
     let condition: String
+    let conditionLabel: String
 }
 struct ForecastInfo {
     let temp: Float
@@ -37,12 +38,6 @@ struct WeatherManager {
         static let host = "api.openweathermap.org"
         static let path = "/data/2.5/weather"
         static let forecastPath = "/data/2.5/forecast"
-    }
-    enum urlWFItem: String{
-        case scheme = "http"
-        case host = "api.openweathermap.org"
-        case weatherPath = "/data/2.5/weather"
-        case forecastPath = "/data/2.5/forecast"
     }
     
     func makeURLComponents(_ cityName: String){
@@ -106,8 +101,8 @@ struct WeatherManager {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let temp = decodedData.main.temp
             let city = decodedData.name 
-            let condition = WeatherModel(conditionID: decodedData.weather[0].id)
-            let weatherInfo = WeatherInfo(temp: temp, city: city, condition: condition.conditionName)
+            let condition = WeatherModel(conditionID: decodedData.weather.first?.id ?? 800)
+            let weatherInfo = WeatherInfo(temp: temp, city: city, condition: condition.conditionName, conditionLabel: condition.conditionLabel)
   
             return weatherInfo
         } catch {

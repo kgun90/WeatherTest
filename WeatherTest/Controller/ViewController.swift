@@ -10,14 +10,12 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
-//    let mainStack = UIStackView()
-//
-//    var label = UILabel()
-    
-    
+
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var weatherLabel: UILabel!
+    
     @IBOutlet weak var searchTextfField: UITextField!
     
     @IBOutlet weak var forecastStack: UIStackView!
@@ -29,6 +27,10 @@ class ViewController: UIViewController {
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
+    let date = Date()
+    let dateFormatter = DateFormatter()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherManager.delegate = self
@@ -37,7 +39,8 @@ class ViewController: UIViewController {
       
         if CLLocationManager.locationServicesEnabled(){ locationManager.requestLocation() }
         searchTextfField.delegate = self
-   
+        searchTextfField.placeholder = "Type City Name"
+        
     }
 
     @IBAction func currentLocationButton(_ sender: UIButton) {
@@ -61,7 +64,7 @@ extension ViewController: UITextFieldDelegate {
         if textField.text != "" {
             return true
         }else {
-            textField.placeholder = "Type City Name"
+//            textField.placeholder = "Type City Name"
             return false
         }
     }
@@ -78,12 +81,18 @@ extension ViewController: UITextFieldDelegate {
 //MARK: - WeatherManagerDelegate
 
 extension ViewController: WeatherManagerDelegate {
-    func didUpdateForecast(data: [ForecastInfo]) {
     
+    func didUpdateForecast(data: [ForecastInfo]) {
+        dateFormatter.dateFormat = "EEE"
+        dateFormatter.locale = Locale(identifier: "kr_KR")
+        let today = dateFormatter.string(from: date).uppercased()
+        
         DispatchQueue.main.async {
-                self.forecastImageLabel.subviews.forEach {
-                    ($0.subviews[0] as! UIImageView).image = UIImage(systemName: data[$0.tag].condition)
-                    ($0.subviews[1] as! UILabel).text = String(format: "%.0f", data[$0.tag].temp)
+            for i in 0 ..< self.forecastImageLabel.subviews.count {
+                self.forecastImageLabel.subviews[i]
+//                    ($0.subviews[0] as! UIImageView).image = UIImage(systemName: data[$0.tag].condition)
+//                    ($0.subviews[1] as! UILabel).text = String(format: "%.0f", data[$0.tag].temp)
+//                    ($0.subviews[2] as! UILabel).text = today
                 }
         }
     }
@@ -93,6 +102,7 @@ extension ViewController: WeatherManagerDelegate {
             self.tempLabel.text = String(format: "%.0f", data.temp)
             self.cityLabel.text = data.city
             self.weatherImage.image = UIImage(systemName: data.condition)
+            self.weatherLabel.text = data.conditionLabel
         }
     }
     

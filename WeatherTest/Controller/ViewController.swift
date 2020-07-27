@@ -72,6 +72,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchTextfField.text {
             weatherManager.makeURLComponents(city)
+            // makeURLComponents 함수명 명확하고 구분 가능하게 수정
         }
         searchTextfField.text = ""
     }
@@ -86,13 +87,16 @@ extension ViewController: WeatherManagerDelegate {
         dateFormatter.dateFormat = "EEE"
         dateFormatter.locale = Locale(identifier: "kr_KR")
         let today = dateFormatter.string(from: date).uppercased()
+        // Parsing data 중 날짜 자료를 받아서 가공 후 출력하는 식으로 수정
         
         DispatchQueue.main.async {
-            for i in 0 ..< self.forecastImageLabel.subviews.count {
-                self.forecastImageLabel.subviews[i]
-//                    ($0.subviews[0] as! UIImageView).image = UIImage(systemName: data[$0.tag].condition)
-//                    ($0.subviews[1] as! UILabel).text = String(format: "%.0f", data[$0.tag].temp)
-//                    ($0.subviews[2] as! UILabel).text = today
+//            for i in 0 ..< self.forecastImageLabel.subviews.count {
+//                self.forecastImageLabel.subviews[i]
+            self.forecastImageLabel.subviews.forEach{
+                    ($0.subviews[0] as! UIImageView).image = UIImage(systemName: data[$0.tag].condition)
+                    ($0.subviews[1] as! UILabel).text = String(format: "%.0f", data[$0.tag].temp)
+                    ($0.subviews[2] as! UILabel).text = today
+                    // subviews[] as!, tag 사용 문법은 위험하니 수정
                 }
         }
     }
